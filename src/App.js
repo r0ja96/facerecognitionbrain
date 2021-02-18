@@ -21,6 +21,10 @@ class App extends Component{
     }
   }
   
+  calculateFaceLocation = (data) =>{
+    const clarifaiFace = data.outputs[0].data.regions[0].region_info.bounding_box;
+    console.log(clarifaiFace);
+  }
 
   onInputChange = (event) =>{
     this.setState({input:event.target.value});
@@ -28,14 +32,17 @@ class App extends Component{
 
    onSubmit = async (event)=>{
     
-    this.setState({imageUrl:this.state.input});
+   this.setState({imageUrl:this.state.input});
+
     try{
+      
     const res = await app.models
     .predict(
     Clarifai.FACE_DETECT_MODEL,
     this.state.input
     );
-    console.log(res);
+
+    this.calculateFaceLocation(res);
 
     }catch(err){
       console.log(err);
