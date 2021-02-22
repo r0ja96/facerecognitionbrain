@@ -1,9 +1,9 @@
 import "./Navigation.css";
 
-const Navigation = () =>{
+const Navigation = ({onRouteChange}) =>{
     return(
         <nav>
-            <p>Sign Out</p>
+            <p onClick={() => onRouteChange('signin')}>Sign Out</p>
         </nav>
     );
 }
