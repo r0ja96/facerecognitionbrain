@@ -1,10 +1,10 @@
 import './Rank.css';
 
-const Rank = () => {
+const Rank = ({name,entries}) => {
     return(
         <div>
-            <p>Alan, Your cuurent rank is ...</p>
-            <p>{'#5'}</p>
+            <p>{name}, Your cuurent rank is ...</p>
+            <p>{entries}</p>
         </div>
     );
 }
