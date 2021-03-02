@@ -123,11 +123,6 @@ class App extends Component{
       this.setState({route:route});
   }
 
-   async componentDidMount(){
-    const response =  await fetch('http://localhost:3000/');
-    console.log( await response.json());
-  }
-
   render(){
     const {isSignedIn, imageUrl, route, box} = this.state;
   return (
