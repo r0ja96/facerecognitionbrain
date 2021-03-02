@@ -40,11 +40,10 @@ class App extends Component{
         name: data.name,
         email: data.email,
         password: data.password,
-        entries: 0,
+        entries: data.entries,
         joined: data.joined
     } 
     });
-    console.log('app.js',data);
   }
 
 
@@ -70,7 +69,7 @@ class App extends Component{
     this.setState({input:event.target.value});
   }
 
-   onSubmit = async (event)=>{
+   onSubmit = (event)=>{
     
    this.setState({imageUrl:this.state.input});
 
@@ -103,7 +102,8 @@ class App extends Component{
         })
         }).then( response => response.json())
         .then(count =>{
-          this.setState(Object.assign(this.state.user,{entries: count}));
+          console.log(count.entries);
+         this.setState(Object.assign(this.state.user,{entries: count.entries}));
         });
       }
       this.displayFaceBox(this.calculateFaceLocation(response));
@@ -121,11 +121,6 @@ class App extends Component{
       this.setState({isSignedIn: true});
     }
       this.setState({route:route});
-  }
-
-   async componentDidMount(){
-    const response =  await fetch('http://localhost:3000/');
-    console.log( await response.json());
   }
 
   render(){
